@@ -1,0 +1,57 @@
+/* colors */
+body {
+    background-color: whitesmoke;
+}
+
+.navbar {
+    background-color: #411466;
+}
+
+.navbar a {
+    color: gold;
+}
+
+.card {
+    background-color: white;
+}
+
+.card-body {
+    color: #d54848;
+}
+
+button {
+    background-color: whitesmoke;
+}
+
+
+/* styles */
+.fa-thumbs-up, .fa-trash {
+    font-size: xx-large;
+}
+
+.icons-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.communities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.community-info-box {
+    height: 18rem;
+    width: 90%;
+    margin: auto;
+}
+
+.community-info-box img{
+    height: 50%;
+    width: 100%;
+    object-fit: scale-down;
+}
+
+.community-info-box button {
+    height: 2.5rem;
+}

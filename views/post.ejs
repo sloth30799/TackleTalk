@@ -1,0 +1,26 @@
+<%- include('partials/header') -%>
+
+<div class="container mt-5 mb-3">
+  <img src="<%= post.image%>" class="card-img-top rounded mb-3">
+  <div class="card-body">
+    <h2 class="card-title m-0.5"><strong><%= post.title%></strong></h2>
+    <p class="card-text m-3"><%= post.caption%></p>
+    <div class="icons-box">
+      <form
+        action="/post/likePost/<%= post.id %>?_method=PUT"
+        method="POST"
+      >
+      <button class="border border-0" type="submit"><i class="fa-regular fa-thumbs-up"></i>   <%= post.likes%></button>
+      </form>
+      <%if(post.user == user.id){ %>
+      <form
+        action="/post/deletePost/<%= post.id %>?_method=DELETE"
+        method="POST"
+      >
+        <button class="border border-0" type="submit"><i class="fa-solid fa-trash"></i></button>
+      </form>
+      <%}%>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>

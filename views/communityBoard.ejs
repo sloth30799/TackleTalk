@@ -1,0 +1,35 @@
+<%- include('partials/header') -%>
+
+<div class="container-md mt-3">
+    <h3>Create a new community.</h3>
+    <form action="/community/createCommunity" enctype="multipart/form-data" method="POST">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="imgUpload" class="form-label">Image</label>
+            <input class="form-control" type="file" id="imageUpload" name="file">
+        </div>
+        <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+    </form>
+</div>
+
+<div class="container mt-5 communities">
+<% for(let i = 0; i < communities.length; i++) {%>
+    <a href="/community/<%= communities[i]._id%>" class="text-decoration-none text-dark">
+        <div class="card">
+            <div class="card-body">
+              <h3 class="card-title"><%= communities[i].name%></h3>
+              <h6 class="card-subtitle mb-2 text-muted"><small class="text-muted"><%= communities[i].admin.userName%></small></h6>
+              <p class="card-text"><%= communities[i].description%></p>
+            </div>
+        </div>
+        <% }%>
+    </div>
+</a>
+<%- include('partials/footer') -%>

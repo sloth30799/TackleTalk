@@ -1,0 +1,129 @@
+<%- include('partials/header') -%>
+
+<div class="card community-info-box">
+	<img
+		src="<%= community.image %>"
+		class="card-img-top rounded"
+	/>
+	<div class="container d-sm-flex ">
+		<div class="card-body text-warning">
+			<h3 class="card-title"><%= community.name%></h3>
+			<p class="card-text"><%= community.description%></p>
+		</div>
+		<div class="d-grid gap-2 d-md-flex">
+			<% if (community.members.includes(user.id)) { %>
+				<form action="/community/<%= community.id %>/removeMember?_method=PUT" method="POST">
+					<button
+						class="btn btn-info"
+						type="submit"
+					>
+						Joined
+					</button>
+				</form>
+			<% } else { %>
+				<form action="/community/<%= community.id %>/joinMember?_method=PUT" method="POST">
+					<button
+					class="btn btn-info"
+					type="submit"
+					>
+					Join +
+				</button>
+			</form>
+			<% } %>
+		</div>
+	</div>
+</div>
+
+<% for(var i=0; i<posts.length; i++) { %>
+	<a
+		href="/post/<%= posts[i]._id%>"
+		class="text-decoration-none text-dark"
+	>
+		<div
+			class="card mb-3 m-auto mt-3 feed-boxes"
+			style="max-width: 80%"
+		>
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img
+						src="<%= posts[i].image%>"
+						class="img-fluid rounded-start"
+						alt="..."
+					/>
+				</div>
+				<div class="col-md-8">
+					<div class="card-body row-8">
+						<p class="card-text">
+							<small class="text-muted"><%= posts[i].user.userName%></small>
+						</p>
+						<h5 class="card-title text-decoration-none">
+							<%= posts[i].title%>
+						</h5>
+						<p class="card-text"><%= posts[i].caption%></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</a>
+<% } %> 
+
+<% if (community.members.includes(user.id) || community.admin == user.id) { %>
+	<div class="container-md mt-5 mb-5">
+		<h3>Make a post!</h3>
+		<form
+			action="/community/<%= community.id %>/createPost"
+			enctype="multipart/form-data"
+			method="POST"
+		>
+			<div class="mb-3">
+				<label
+					for="title"
+					class="form-label"
+					>Title</label
+				>
+				<input
+					type="text"
+					class="form-control"
+					id="title"
+					name="title"
+				/>
+			</div>
+			<div class="mb-3">
+				<label
+					for="caption"
+					class="form-label"
+					>Caption</label
+				>
+				<textarea
+					class="form-control"
+					id="caption"
+					name="caption"
+					rows="3"
+				></textarea>
+			</div>
+			<div class="mb-3">
+				<label
+					for="imgUpload"
+					class="form-label"
+					>Image</label
+				>
+				<input
+					class="form-control"
+					type="file"
+					id="imageUpload"
+					name="file"
+				/>
+			</div>
+			<button
+				type="submit"
+				class="btn btn-primary"
+				value="Upload"
+			>
+				Submit
+			</button>
+		</form>
+	</div>
+<% } %>
+
+
+<%- include('partials/footer') -%>
