@@ -1,6 +1,6 @@
 # TackleTalk: [Visit Here](https://wanderer-store.vercel.app/)
 
-Welcome to the TackleTalk! This is a football-social-app!
+Join the football fandom with TackleTalk - a social app that lets you connect with fellow fans, share your passion, and join communities and met people with similar interests.
 
 # How It's Made:
 
